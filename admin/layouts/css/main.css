@@ -1,0 +1,14 @@
+/* Start Main Rules*/
+
+/*body {
+	background-color: #F4F4F4;
+}
+*/
+/* End Main Rukes*/
+
+/* Start Login Form*/
+.login {width: 24%; margin: 100px auto;}
+.login h4 {color: #888;}
+.login input {margin-bottom: 10px;}
+.login .form-control{background-color: #E5E5E5;}
+/* End Login Form */
