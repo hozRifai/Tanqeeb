@@ -100,7 +100,9 @@ function get_all_cuisines($connection){
                     </div>
                     <div class="info">
                             <div class="price-details">
-                                <h6 class="col-item-h6"> <a href="#"><?php echo $row["name"]; ?></a></h6>
+                                <h6 class="col-item-h6"> 
+                                	<a href="cuisines.php?cuisine=<?php echo $row["name"]; ?>" name="cuisine"> <?php echo $row["name"]; ?> </a>
+                                </h6>
                             </div>
                        
                         <div class="clearfix"></div>
@@ -111,6 +113,59 @@ function get_all_cuisines($connection){
 		}
 		?>
 		</div>
+		<?php
+	}
+}
+function get_all_restaurants_under_certain_cuisine($connection, $cuisine){
+	$cuisines_query = "
+					SELECT r.restaurant_name
+					FROM restaurant r, restaurant_cuisines rc 
+					WHERE rc.cuisines_name like '%$cuisine%'
+					AND rc.restaurant_id = r.id
+				";
+	$results = $connection->query($cuisines_query);
+
+	if (mysqli_num_rows($results) > 0) {
+		?> 
+		<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="mt-4 text-center">Restarants Serve <?php echo "$cuisine";?> Food</h3>
+        </div>
+    </div>
+
+ <div class="row mb-3">
+    <div class="col">
+    </div>
+  </div>
+		<div class="row mt-4">
+		<?php 
+		while ($row = mysqli_fetch_array($results) ) {?>
+			<div class="col-sm-3">
+                <article class="col-item">
+                    <div class="photo">
+                        <a href="#"> <img src="layouts/images/reserve-slide1.jpg" class="img-responsive" alt="Product Image" width="150"  height="150"/> </a>
+                    </div>
+                    <div class="info">
+                            <div class="price-details">
+                                <h6 class="col-item-h6"> <a href="#"><?php echo $row["restaurant_name"]; ?></a></h6>
+                            </div>
+                       
+                        <div class="clearfix"></div>
+                    </div>
+                </article>
+            </div>
+            <?php
+		}
+		?>
+		</div>
+		</div>
+		<?php
+	}else{
+		?>
+			<div class="mt-4">
+				<h3 class="mt-4 text-center">Unfortunatelly there is no restaurant serves <?php echo "$cuisine";?> Food</h3>
+			</div>
 		<?php
 	}
 }
