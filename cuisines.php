@@ -33,4 +33,3 @@
 
         <?php    get_all_cuisines($connection); ?>
     </div>
-       }

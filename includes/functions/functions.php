@@ -116,9 +116,10 @@ function get_all_cuisines($connection){
 		<?php
 	}
 }
+
 function get_all_restaurants_under_certain_cuisine($connection, $cuisine){
 	$cuisines_query = "
-					SELECT r.restaurant_name
+					SELECT r.restaurant_name, r.id
 					FROM restaurant r, restaurant_cuisines rc 
 					WHERE rc.cuisines_name like '%$cuisine%'
 					AND rc.restaurant_id = r.id
@@ -148,7 +149,7 @@ function get_all_restaurants_under_certain_cuisine($connection, $cuisine){
                     </div>
                     <div class="info">
                             <div class="price-details">
-                                <h6 class="col-item-h6"> <a href="#"><?php echo $row["restaurant_name"]; ?></a></h6>
+                                <h6 class="col-item-h6"> <a href="restaurant_category.php?restaurant_id=<?php echo "{$row["id"]}"; ?>"><?php echo $row["restaurant_name"]; ?></a></h6>
                             </div>
                        
                         <div class="clearfix"></div>
@@ -170,7 +171,7 @@ function get_all_restaurants_under_certain_cuisine($connection, $cuisine){
 	}
 }
 function get_certain_restaurants($connection, $search_for_me){
-	$query = "SELECT restaurant_name from restaurant where restaurant_name like '%$search_for_me%'";
+	$query = "SELECT restaurant_name, id from restaurant where restaurant_name like '%$search_for_me%'";
     $results    =   $connection->query($query);
     if (mysqli_num_rows($results) > 0) {
 		?> 
@@ -196,7 +197,7 @@ function get_certain_restaurants($connection, $search_for_me){
 	                    </div>
 	                    <div class="info">
 	                            <div class="price-details">
-	                                <h6 class="col-item-h6"> <a href="#"><?php echo $row["restaurant_name"]; ?></a></h6>
+	                                <h6 class="col-item-h6"> <a href="restaurant_category.php?restaurant_id=<?php echo $row["id"];?>"><?php echo $row["restaurant_name"]; ?></a></h6>
 	                            </div>
 	                        <div class="clearfix"></div>
 	                    </div>
