@@ -2,7 +2,13 @@
 $pageTitle = "Cart";
 include 'init.php';
 $connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-$number_of_items_in_cart = 0;
+// keep tracking the number of items in the cart page 
+if (!isset($_SESSION["number_of_items"])) {
+	$_SESSION["number_of_items"] = 0; 
+}
+if (!isset($_SESSION["total_price"])) {
+	$_SESSION["total_price"] = 0; 
+}
 ?>
 
 
@@ -24,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				"item_size" => $_POST["size"]
 			); 
 			$_SESSION["cart"][] = $item_array;
-			$number_of_items_in_cart += 1;
+			$_SESSION["total_price"] += $_POST["price"]; 
+			$_SESSION["number_of_items"] += 1;
 		}else{ // create cart session for user 
 			$item_array = array(
 					"item_id" => $_POST["id"],
@@ -34,7 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					"item_size" => $_POST["size"]
 				); 
 			$_SESSION["cart"][0] = $item_array;
-			$number_of_items_in_cart += 1;
+			$_SESSION["total_price"] += $_POST["price"]; 
+			$_SESSION["number_of_items"] += 1;
 		}
 	}
 	if (isset($_POST["delete"])) {
@@ -42,13 +50,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				if($value["item_id"] == $_POST["id"]){
 					unset($_SESSION["cart"][$key]);
 					echo '<script> alert("item has been removed")</script>';
+					$_SESSION["number_of_items"] -= 1; 
+					$_SESSION["total_price"] -= $value["item_price"]; 
 					// header("Refresh:0");
 				}
 			}
 	}
 }
 
-if (isset($_SESSION["user_email"]) && isset($_SESSION["card"])) {
+if (isset($_SESSION["user_email"]) && isset($_SESSION["cart"])) {
 	foreach ($_SESSION["cart"] as $key => $value) {
 		echo $value["item_name"] . $value["item_price"] . $value["item_size"] . "<br>";
 	}
@@ -60,7 +70,7 @@ if (isset($_SESSION["user_email"]) && isset($_SESSION["card"])) {
     <div class="row">
         <div class="col-12">
             <div class="table-responsive">
-            <?php if (isset($_SESSION["user_email"]) ) { ?>
+            <?php if (isset($_SESSION["user_email"]) && isset($_SESSION["cart"]) ) { ?>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -107,9 +117,9 @@ if (isset($_SESSION["user_email"]) && isset($_SESSION["card"])) {
                 <div class="col-sm-12  col-md-6">
                     <a href="restaurants.php" style="text-decoration: none;"> <button class="btn btn-lg btn-block btn-light text-uppercase">Continue Shopping</button></a>
                 </div>
-                <?php if ($number_of_items_in_cart > 0 ) {?>
+                <?php if ($_SESSION["number_of_items"] > 0 ) {?>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <a href="checkout.php" class="btn btn-lg btn-block btn-info text-uppercase" style="text-decoration: none; color: #fff;">Check Out</a>
+                    <a href="checkout.php" class="btn btn-lg btn-block btn-info text-uppercase" style="text-decoration: none; color: #fff;">Check Out <?php echo $_SESSION["total_price"] ?> </a>
                 </div>
                 <?php } ?>
             </div>

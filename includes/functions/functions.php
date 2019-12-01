@@ -325,12 +325,11 @@ function fetch_certain_categoty($connection, $restaurant_id, $category) {
 	}
 	
 	?>
-	<section class="menu_list mt-60 mb-60">
+	<section class="menu_list mt-60 mb-60" style="margin-top: 5%;">
 	 <div class="container">
 		<div class="row">
 		   <div class="col-xl-12">
 			  <div class="section-title text-center mb-60">
-				 <p>Famous for good food</p>
 				 <h4>our menu</h4>
 			  </div>
 		   </div>
@@ -425,12 +424,11 @@ function fetch_all_categories($connection, $restaurant_id){
 		$my_categories = array_unique($save_my_categories);
 	}
 	?>
-	<section class="menu_list mt-60 mb-60">
+	<section class="menu_list mt-60 mb-60" style="margin-top: 5%;">
 	 <div class="container">
 		<div class="row">
 		   <div class="col-xl-12">
 			  <div class="section-title text-center mb-60">
-				 <p>Famous for good food</p>
 				 <h4>our menu</h4>
 			  </div>
 		   </div>

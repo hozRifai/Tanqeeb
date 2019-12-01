@@ -24,7 +24,6 @@
           <span class="navbar-toggler-icon"></span>
       </button>
 
-
       <?php
       if(isset($_SESSION["user_email"])) {   ?>
                 <div class="collapse navbar-collapse" id="houzayfa">
