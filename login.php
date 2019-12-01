@@ -112,6 +112,18 @@
 					    to your dashboard soon" ;
 					    // sleep(8);
 					    $_SESSION["user_email"] = $reg_email; // add the new user to the session
+					    // create a cart for the user so the user can add items to his card
+						if(isset($reg_email)){
+							// get the user email
+							$users_query = "SELECT * FROM cart WHERE user_email = '" . $reg_email . "' AND group_id = 0";
+							$user_results = $connection->query($users_query);
+
+							if (mysqli_num_rows($user_results) == 0) { // if user has no cart
+								$query = "INSERT INTO cart ( quantity, total, user_email)
+					    				VALUES ('0','0', '" . $reg_email . "')";
+					    		$user_results    =   $connection->query($query); // create a cart
+							}
+						}
 					    header("Location: dashboard.php");
 					} else {
 					    echo "Error: " . $insert_query . "<br>" . $connection->error;

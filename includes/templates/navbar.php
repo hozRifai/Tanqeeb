@@ -1,14 +1,17 @@
 
 <?php 
+    session_start();
     $connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
     if(!$connection) {
       die("Connection Failed: ". mysqli_connect_error());
     }
-    $user_email = $_SESSION['user_email'];
-    $user_query = "SELECT * FROM users WHERE email = '" . $user_email . "'";
-    $user_data = $connection->query($user_query); 
-    if (mysqli_num_rows($user_data) > 0) {
-      $row = mysqli_fetch_array($user_data);
+    if (isset($_SESSION['user_email'])) {
+      $user_email = $_SESSION['user_email'];
+      $user_query = "SELECT * FROM users WHERE email = '" . $user_email . "'";
+      $user_data = $connection->query($user_query); 
+      if (mysqli_num_rows($user_data) > 0) {
+        $row = mysqli_fetch_array($user_data);
+      }
     }
 ?>
 <header>
@@ -34,7 +37,7 @@
                         </li>
                         <li class="nav-item dropdown-menu"> 
                           <a class="dropdown-item" href="user_profile.php">My Profile</a>
-                          <a class="dropdown-item" href="user_cart.php"> My Cart</a>
+                          <a class="dropdown-item" href="cart.php"> My Cart</a>
                           <a class="dropdown-item" href="logout.php">Logout</a>
                         </li>
                     </div>
