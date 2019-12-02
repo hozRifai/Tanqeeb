@@ -28,15 +28,15 @@
       if(isset($_SESSION["user_email"])) {   ?>
                 <div class="collapse navbar-collapse" id="houzayfa">
                   <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="restaurants.php">Restaurants</a></li>
                     <li class="nav-item"><a class="nav-link" href="cuisines.php">Cuisines</a></li>
                     <div class="dropdown" >
                         <li class="btn btn-danger dropdown-toggle" data-toggle="dropdown"> <i class="fas fa-graduation-cap"></i> <?php echo $row["first_name"] . $row["last_name"] ; ?> 
                         </li>
                         <li class="nav-item dropdown-menu"> 
-                          <a class="dropdown-item" href="user_profile.php">My Profile</a>
-                          <a class="dropdown-item" href="cart.php"> My Cart</a>
+                          <a class="dropdown-item" href="user_profile.php">Profile</a>
+                          <a class="dropdown-item" href="cart.php">Cart</a>
+                          <a class="dropdown-item" href="orders.php">Orders</a>
                           <a class="dropdown-item" href="logout.php">Logout</a>
                         </li>
                     </div>

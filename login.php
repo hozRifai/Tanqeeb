@@ -1,7 +1,7 @@
  <?php
  	session_start();
 	if (isset($_SESSION['user_email'])) {
-		header('Location: dashboard.php');
+		header('Location: restaurants.php');
 	} else {
 		$pageTitle = "Login page";
 		include 'init.php';
@@ -35,7 +35,7 @@
 					$check_email =  $row["email"];
 					if(isset($check_email)){
 						$_SESSION['user_email'] = $check_email;
-						header('Location: dashboard.php');
+						header('Location: restaurants.php');
 					}else{
 						echo "Incorrect Credentials";
 					}
@@ -124,7 +124,7 @@
 					    		$user_results    =   $connection->query($query); // create a cart
 							}
 						}
-					    header("Location: dashboard.php");
+					    header("Location: restaurants.php");
 					} else {
 					    echo "Error: " . $insert_query . "<br>" . $connection->error;
 					}

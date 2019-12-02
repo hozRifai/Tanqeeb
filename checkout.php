@@ -11,7 +11,7 @@ $connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 	      <div class="row " style="margin-top: 7%;">
 	        <div class="col-md-4 order-md-2 ">
 	          <h4 class="d-flex justify-content-between align-items-center ">
-	            <span class="text-muted mt-4">Your cart</span>
+	            <span class="text-muted mt-4" style="margin-bottom: 8%;">Your cart</span>
 	            <span class="badge badge-secondary badge-pill"><?php echo $_SESSION["number_of_items"] ; ?></span>
 	          </h4>
 
@@ -41,20 +41,20 @@ $connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 		        </div>
 
         <div class="col-md-8 order-md-1">
-          <h4 class="mb-3">Billing address</h4>
+          <h4 style="color: black; margin-top: 3%; margin-left: -67%;">Billing address</h4>
           <form method="POST" action="add_address.php">
             <div class="mb-3">
-              <label for="address">Address</label>
+              <label for="address">Street</label>
               <input type="text" class="form-control" name="street_address" placeholder="1234 Main St" required>
             </div>
 
             <div class="mb-3">
-              <label for="address2">Address 2 <span class="text-muted"></span></label>
-              <input type="text" class="form-control" name="apartment_number" placeholder="Apartment Number" required >
+              <label for="address2">Apartment Number<span class="text-muted"></span></label>
+              <input type="text" class="form-control" name="apartment_number" placeholder="k5" required >
             </div>
 
 
-            <button class="btn btn-danger btn-lg btn-block mb-4" type="submit">Order Now</button>
+            <input class="btn btn-danger btn-lg btn-block mb-4" type="submit" name="address_form" value="Order Now">
           </form>
         </div>
       </div> <?php } ?>
