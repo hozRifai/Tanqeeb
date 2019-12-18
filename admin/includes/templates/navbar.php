@@ -15,34 +15,12 @@
                         <li>
                             <a href="#">Add restaurant</a>
                         </li>
-                        <li>
-                            <a href="#">Edit restaurant</a>
-                        </li>
-                        <li>
-                            <a href="#">Delete restaurant</a>
-                        </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">About</a>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
+                    <a href="#">users</a>
                 <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a href="#">Orders</a>
                 </li>
             </ul>
 
@@ -66,21 +44,21 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="">
                                 <i class="fas fa-utensils"></i> 
                                         Restaurants
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="">
                                 <i class="fas fa-users"></i> 
                                         Users
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="">
                                 <i class="fas fa-chalkboard-teacher fa-1x  fa-fw aria-hidden=\'true\' "></i> 
                                         Orders
                             </a>
@@ -96,7 +74,8 @@
                 </div>
             </nav>
             
-                <p> Empty for now </p>
+                <?php display_users($connection);?> </p>
+                <?php display_restaurants($connection);?> </p>
             <div class="line"></div>
 
         </div>

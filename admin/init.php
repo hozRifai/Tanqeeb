@@ -4,6 +4,7 @@
 	$css 		= "layouts/css/" ;
 	$js 		= "layouts/js/" ;
 
+	include 'includes/functions/functions.php';
 	include 'utils.php';
 	include $templates . "header.php";
 

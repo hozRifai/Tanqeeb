@@ -8,7 +8,7 @@
     $subject = $_POST["subject"] ;
     $message = $_POST["message"] ; 
     $final_message  = "Sent From: $name " . $message;
-    $to = "tanqeeb@moakt.co";
+    $to = "tanqeeb@gmail.com";
     // this is not going to work! we need a real server!
     mail($to, $subject, $final_message);
   }
@@ -18,7 +18,7 @@
   <h1 class=" my-5 wow fadeInDownBig" data-wow-duration="2s">Discover Great Restaurants At Your Place!</h1>
     <h4 class="my-2 wow  bounceInRight" data-wow-duration="3s">Let's uncover the best places to eat !</h4>
     <div class="my-5 wow bounceIn container" data-wow-duration="4s">
-    <form class="mt-5">
+    <form class="mt-5" action="restaurants.php" method="GET">
       <div class="form-row">
         <div class="form-group col-md-2"></div>
         <div class="form-group col-md-1"></div>
@@ -28,16 +28,16 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="">Location</span>
               </div>
-              <select class="form-control form-control-lg">
-                <option>Sharjah</option>
-              <option>Abu Dhabi</option>
-              <option>Dubai</option>
-              <option>Ajman</option>
-              <option>RAK</option>
-              <option>Fujairah</option>
+              <select class="form-control form-control-lg" name="city">
+                <option value="Sharjah">Sharjah</option>
+                <option value="Abu Dhabi">Abu Dhabi</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Ajman">Ajman</option>
+                <option value="Ras Al Khaima">RAK</option>
+                <option value="Fujairah">Fujairah</option>
             </select>
             <div class="input-group-append">
-                  <button type="button" class="btn btn-danger btn-lg">SEARCH</button>
+                  <button type="submit" class="btn btn-danger btn-lg">SEARCH</button>
               </div>
           </div>
           </div>

@@ -6,11 +6,13 @@
 		$pageTitle = "Profile Page";
 		// $dont_show_navbar = "";
 		include 'init.php';
+		
 		// get user's data
 		$connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 		if(!$connection) {
 			die("Connection Failed: ". mysqli_connect_error());
 		}
+
 		$user_email = $_SESSION['user_email'];
 		$user_query = "SELECT * FROM users WHERE email = '" . $user_email . "'";
 		$user_data = $connection->query($user_query);	

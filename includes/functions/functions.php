@@ -7,11 +7,6 @@
 |============================================================================================|
 */
 
-/*
-1- get_restaurants(): a function to return all the restaurants in the db
-2- user_get_orders(): a function which returns all the orders of a certain user
-3- edit_user_info(): a function to let the user edit his info
- */
 include 'connection.inc';
 $connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 if(!$connection) {
@@ -66,7 +61,13 @@ function get_all_restaurants($connection){
 			<div class="col-sm-3">
                 <article class="col-item">
                     <div class="photo">
-                        <a href="#"> <img src="layouts/images/reserve-slide1.jpg" class="img-responsive" alt="Restaurant Image" width="150"  height="150"/> </a>
+                        <a href="#">
+                        	<?php 
+                        	if(preg_match("@^https://@i",$row["image"])) {
+                        		?>
+                        		<img src="<?php echo "{$row["image"]}" ?>" class="img-responsive" alt="Restaurant Image" width="150"  height="150"/> </a>
+                        	<?php } else {?>
+                        	<img src="layouts/images/reserve-slide1.jpg" class="img-responsive" alt="Restaurant Image" width="150"  height="150"/> </a> <?php } ?>
                     </div>
                     <div class="info">
                             <div class="price-details">
@@ -499,6 +500,51 @@ function fetch_all_categories($connection, $restaurant_id){
 	 </div>
  </section>
 <?php
+}
+
+
+function get_restaurant_of_this_city($connection, $city_name){
+	$city_query = "SELECT location, restaurant_name FROM restaurant WHERE location = '" . $city_name . "'";
+	$results = $connection->query($city_query);
+
+	if (mysqli_num_rows($results) > 0) {
+		?> 
+		<div class="container">
+			<div class="row">
+		        <div class="col-lg-4">
+		            <h3 class="mt-4 text-center">Our Restaurants</h3>
+		        </div>
+		        <div class=" mt-4 col-lg-6">
+		            <form action="" method="post">
+		                <input type="text" name="search">
+		                <input type="submit" name="submit" value="Search" class="btn btn-danger">
+		            </form> 
+		        </div>
+		    </div>
+			<div class="row mt-4">
+			<?php 
+			while ($row = mysqli_fetch_array($results) ) {?>
+				<div class="col-sm-3">
+	                <article class="col-item">
+	                    <div class="photo">
+	                        <a href="#"> <img src="layouts/images/reserve-slide1.jpg" class="img-responsive" alt="Restaurant Image" width="150"  height="150"/> </a>
+	                    </div>
+	                    <div class="info">
+	                            <div class="price-details">
+	                                <h6 class="col-item-h6"> <a href="restaurant_category.php?restaurant_id=<?php echo $row["id"];?>"><?php echo $row["restaurant_name"]; ?></a></h6>
+	                            </div>
+	                        <div class="clearfix"></div>
+	                    </div>
+	                </article>
+	            </div>
+	            <?php
+			}
+			?>
+			</div>
+		</div>
+		<?php
+	}
+
 }
 # A list of functions to be implemented later
 // function add_to_cart($connection, $item_id){

@@ -74,7 +74,7 @@
 				if(isset($reg_email)){
 					$filterEmail = filter_var(trim($reg_email) , FILTER_SANITIZE_EMAIL) ;
 					 if(filter_var($filterEmail, FILTER_VALIDATE_EMAIL) != true ) {
-					 	$formErrors[] = "can you write a proper email you a**h*le!" ; 
+					 	$formErrors[] = "can you write a proper email you !" ; 
 					 }
 					 if (check_email_in_db($connection, $reg_email)) {
 					 	$formErrors[] = "This email belongs to another user";
@@ -110,12 +110,11 @@
 					if ($connection->query($insert_query) === TRUE) {
 					    $success_message = "Thank you for your registeration, you will be redirected 
 					    to your dashboard soon" ;
-					    // sleep(8);
 					    $_SESSION["user_email"] = $reg_email; // add the new user to the session
 					    // create a cart for the user so the user can add items to his card
 						if(isset($reg_email)){
 							// get the user email
-							$users_query = "SELECT * FROM cart WHERE user_email = '" . $reg_email . "' AND group_id = 0";
+							$users_query = "SELECT * FROM cart WHERE user_email = '" . $reg_email . "'";
 							$user_results = $connection->query($users_query);
 
 							if (mysqli_num_rows($user_results) == 0) { // if user has no cart
@@ -126,11 +125,9 @@
 						}
 					    header("Location: restaurants.php");
 					} else {
-					    echo "Error: " . $insert_query . "<br>" . $connection->error;
+					    echo "Error: " . $connection->error;
 					}
 				}
-
-
 			}
 		}
 	}
@@ -240,7 +237,7 @@
 	$(".login-page h1 span").click(function(){
 		$(this).addClass("selected").siblings().removeClass("selected");
 		$(".login-page form").hide();
-		$("." +$(this).data("class")).fadeIn(100);
+		$("." +$(this).data("class")).fadeIn(500);
 	});
 </script>
 

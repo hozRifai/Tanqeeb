@@ -11,6 +11,11 @@
         get_certain_restaurants($connection, $search_for_me);
         exit();
     }
+    if ($_SERVER['REQUEST_METHOD'] == 'GET'  && isset($_GET["city"]) ) {
+        $location = $_GET["city"];
+        get_restaurant_of_this_city($connection, $location);
+        exit();
+    }
 ?>
 
 <section class="mt-4">
