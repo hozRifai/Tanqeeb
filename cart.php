@@ -58,11 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 }
 
-// if (isset($_SESSION["user_email"]) && isset($_SESSION["cart"])) {
-// 	foreach ($_SESSION["cart"] as $key => $value) {
-// 		echo $value["item_name"] . $value["item_price"] . $value["item_size"] . "<br>";
-// 	}
-// }
+
 
 ?>
 <section style="margin-top: 8%;">

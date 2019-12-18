@@ -81,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     	$_SESSION["cart"] = [];
     	$_SESSION["total_price"] = 0;
     	$_SESSION["number_of_items"] = 0;
+    	header('Location: restaurants.php');
 	}
 }
 

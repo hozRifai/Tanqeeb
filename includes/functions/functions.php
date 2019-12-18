@@ -2,7 +2,6 @@
 /*
 =============================================================================================|
 |            =>  Back End Function                                                           |
-|            =>  Coded By Houzayaf Rifai                                                     |
 |            =>  Thing Twice  Code Once !                                                    |
 |============================================================================================|
 */
@@ -71,7 +70,8 @@ function get_all_restaurants($connection){
                     </div>
                     <div class="info">
                             <div class="price-details">
-                                <h6 class="col-item-h6"> <a 
+                                <h6 class="col-item-h6"> 
+                                	<a 
                                 	href='restaurant_category.php?restaurant_id=<?php echo $row["id"];?>'>
                                 	<?php echo $row["restaurant_name"]; ?></a></h6>
                             </div>
@@ -172,7 +172,7 @@ function get_all_restaurants_under_certain_cuisine($connection, $cuisine){
 	}
 }
 function get_certain_restaurants($connection, $search_for_me){
-	$query = "SELECT restaurant_name, id from restaurant where restaurant_name like '%$search_for_me%'";
+	$query = "SELECT restaurant_name, id, image from restaurant where restaurant_name like '%$search_for_me%'";
     $results    =   $connection->query($query);
     if (mysqli_num_rows($results) > 0) {
 		?> 
@@ -194,7 +194,12 @@ function get_certain_restaurants($connection, $search_for_me){
 				<div class="col-sm-3">
 	                <article class="col-item">
 	                    <div class="photo">
-	                        <a href="#"> <img src="layouts/images/reserve-slide1.jpg" class="img-responsive" alt="Restaurant Image" width="150"  height="150"/> </a>
+	                        <?php 
+                        	if(preg_match("@^https://@i",$row["image"])) {
+                        		?>
+                        		<img src="<?php echo "{$row["image"]}" ?>" class="img-responsive" alt="Restaurant Image" width="150"  height="150"/> </a>
+                        	<?php } else {?>
+                        	<img src="layouts/images/reserve-slide1.jpg" class="img-responsive" alt="Restaurant Image" width="150"  height="150"/> </a> <?php } ?>
 	                    </div>
 	                    <div class="info">
 	                            <div class="price-details">
@@ -297,6 +302,7 @@ function fetch_restaurant_category_item($connection, $restaurant_id){
 		return "No items to display";
 	}
 }
+
 # this function is being called whenever the user hits the link "restaurant+id=?and category =  ?"
 function fetch_certain_categoty($connection, $restaurant_id, $category) {
 	$item_query = " SELECT t.id, ct.category_name, t.name, t.price, t.size, t.ingredients, t.picture
@@ -420,7 +426,7 @@ function fetch_all_categories($connection, $restaurant_id){
 				foreach ($my_array as $key => $value) {
 				if($key == 6)
 					array_push($save_my_categories, $value);
-				}
+				} 
 			}
 		}
 		$my_categories = array_unique($save_my_categories);
@@ -544,7 +550,6 @@ function get_restaurant_of_this_city($connection, $city_name){
 		</div>
 		<?php
 	}
-
 }
 # A list of functions to be implemented later
 // function add_to_cart($connection, $item_id){

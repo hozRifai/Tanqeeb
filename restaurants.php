@@ -1,5 +1,4 @@
 <?php
-    session_start();
 
     $pageTitle = "Restaurants Page";
     include 'init.php';
@@ -19,23 +18,23 @@
 ?>
 
 <section class="mt-4">
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4">
-            <h3 class="mt-4 text-center">Our Restaurants</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h3 class="mg-top text-center">Our Restaurants</h3>
+            </div>
+            <div class="mg-top-4 col-lg-6">
+                <form action="" method="post">
+                    <input type="text" name="search">
+                    <input type="submit" name="submit" value="Search" class="btn btn-danger">
+                </form> 
+            </div>
         </div>
-        <div class=" mt-4 col-lg-6">
-            <form action="" method="post">
-                <input type="text" name="search">
-                <input type="submit" name="submit" value="Search" class="btn btn-danger">
-            </form> 
+     <div class="row mb-3">
+        <div class="col">
         </div>
-    </div>
- <div class="row mb-3">
-    <div class="col">
-    </div>
-  </div>
+      </div>
 
-<?php    get_all_restaurants($connection); ?>
-</div>
+    <?php    get_all_restaurants($connection); ?>
+    </div>
 </section>
