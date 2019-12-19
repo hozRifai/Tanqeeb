@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $pageTitle = "Restaurants Page";
+    $pageTitle = "Cuisines Page";
     include 'init.php';
     $connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
     if(!$connection) 

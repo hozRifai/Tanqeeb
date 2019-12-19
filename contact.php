@@ -23,10 +23,8 @@
             <div class="contact-about">
               <h3>UOS</h3>
               <p>
-                University of Sharjah will be more happy to reach out or help
-                other people who are interested in pursuing knowledge, and by
-                doing so this will allow us to grow and to be the university
-                that we are aiming for.
+                Tanqeeb hosts many restaurants and connects them 
+				with food lovers all around the UAE.
               </p>
               <div class="social-links">
                 <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
@@ -46,12 +44,12 @@
             <div class="info">
               <div>
                 <i class="fa fa-map-marker"></i>
-                <p>M7, Man Building</p>
+                <p> DUBAI </p>
               </div>
 
               <div>
                 <i class="fa fa-envelope"></i>
-                <p>sciences@sharjah.ac.ae</p>
+                <p>tanqeeb@sharjah.ac.ae</p>
               </div>
 
               <div>

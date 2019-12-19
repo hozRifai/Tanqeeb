@@ -4,18 +4,18 @@
                 <div class="col-sm-12 col-md-5">
                   <h6>About Us</h6>
                     <p class="text-justify"> 
-                      this is a dummy text :P this is a dummy text :P this is a dummy text :P
-                      this is a dummy text :P this is a dummy text :P this is a dummy text :P
+                      Tanqeeb is a website made for food lovers, craving
+					  an easy experience of ordering food online.
                     </p>
                 </div>
 
                 <div class="col-xs-6 col-md-2">
                   <h6>Categories</h6>
                   <ul class="footer-links">
-                        <li style="color: #fff;">Category 1</li>
-                        <li style="color: #fff;">Category 2</li>
-                        <li style="color: #fff;">Category 3</li>
-                        <li style="color: #fff;">Category 4</li>
+                        <li style="color: #fff;">Lebanese</li>
+                        <li style="color: #fff;">Italien</li>
+                        <li style="color: #fff;">American</li>
+                        <li style="color: #fff;">Arabic</li>
                   </ul>
                 </div>
 
@@ -40,7 +40,7 @@
               <div class="row" id="maarifa">
                 <div class="col-md-8 col-sm-6 col-xs-12">
                   <p class="copyright-text">Copyright &copy; 2019 All Rights Reserved by
-               Al Mareefah, Coded with  <span style="color:red;" >  <i class="fa fa-heart"></i> </span> By <span style="color:red;">Houzayfa Rifai </span>
+               Al Mareefah, Coded with  <span style="color:red;" >  <i class="fa fa-heart"></i> 
                   </p>
                 </div>
 

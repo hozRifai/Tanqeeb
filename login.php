@@ -59,7 +59,7 @@
 						$formErrors[] = "username can not be less than 3 characters";
 					}
 				}else{
-					$formErrors[] = "I asked for your first name you ***************!";
+					$formErrors[] = "Please Enter First name";
 				}
 
 				if(isset($last_name)) {
@@ -68,39 +68,39 @@
 						$formErrors[] = "last name can not be less than 3 characters";
 					}
 				}else{
-					$formErrors[] = "I asked for your last name you ***************!";
+					$formErrors[] = "Please Enter Last name";
 				}
 
 				if(isset($reg_email)){
 					$filterEmail = filter_var(trim($reg_email) , FILTER_SANITIZE_EMAIL) ;
 					 if(filter_var($filterEmail, FILTER_VALIDATE_EMAIL) != true ) {
-					 	$formErrors[] = "can you write a proper email you !" ; 
+					 	$formErrors[] = "Email not valid" ; 
 					 }
 					 if (check_email_in_db($connection, $reg_email)) {
 					 	$formErrors[] = "This email belongs to another user";
 					 }
 				}else{
-					$formErrors[] = "I asked for your email you ***************!" ; 
+					$formErrors[] = "Please Enter your email" ; 
 				}
 
 				if(isset($reg_password)) {
 					if(empty($reg_password) ) { 
-						$formErrors[] = "Clever Man! dont write your password again and you will get banned :)";
+						$formErrors[] = "Password is required";
 					}
 					$reg_password = md5($reg_password) ;
 				}
 				if(isset($phone_number)) {
 					if(empty($phone_number) ) { 
-						$formErrors[] = "Clever Man! dont write your phone number again and you will get banned :)";
+						$formErrors[] = "phone number is required";
 					}
 					if(!validate_mobile(trim($phone_number))){
-						$formErrors[] = "Not a valid phone number :(";
+						$formErrors[] = "Not a valid phone number ";
 					}
 					if (check_phone_number_in_db($connection, $phone_number)) {
-						$formErrors[] = "This phone number belongs to another user :(";
+						$formErrors[] = "This phone number belongs to another user ";
 					}
 				}
-				// polite user ? haram let him in :  behave you little boy ;)
+				
 				if (empty($formErrors)) {
 					$insert_query = "
 					INSERT INTO users ( phone_number, first_name, last_name, email, password, group_id)";

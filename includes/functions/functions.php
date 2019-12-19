@@ -1,10 +1,4 @@
 <?php
-/*
-=============================================================================================|
-|            =>  Back End Function                                                           |
-|            =>  Thing Twice  Code Once !                                                    |
-|============================================================================================|
-*/
 
 include 'connection.inc';
 $connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -20,20 +14,7 @@ function set_title() {
  	else
  		echo 'Tanqeeb';
 }
-// function convert_title_to_url($connection, $restaurant_id, $category){
-// 	$capture = 0; // not found
-// 	$url = strtolower($_SERVER['REQUEST_URI']);
-// 	if (strpos($url, $category) !== false) {
-// 		foreach ($str_word_count($url, 1) as $key => $value) {
-// 			if("category" == $value):
-// 				$capture = 1;
-// 		}
-// 		if $capture == 1:
-// 			$url = preg_replace('category', '', $url);
-// 	    #$url = "Tanqeeb/restaurant_category.php?restaurant_id=$restaurant_id"; // poor php i cant 
-// 	}
-// 	return $url;
-// }
+
 
 function check_email_in_db($connection, $email){
 	$query = "SELECT email from users where email = '" . $email . "'";
